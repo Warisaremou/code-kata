@@ -1,15 +1,11 @@
 function order(str) {
-	let orderedStrings = [];
-	const words = str.split(" ");
-
-	words.forEach((word) => {
-		const wordIndex = word.match(/\d/);
-		if (wordIndex) {
-			orderedStrings[wordIndex[0]] = word;
-		}
-	});
-
-	return orderedStrings.join(" ").trimStart();
+	return str
+		.split(" ")
+		.sort((a, b) => {
+			const regex = /\d/;
+			return a.match(regex) - b.match(regex);
+		})
+		.join(" ");
 }
 
 export { order };
